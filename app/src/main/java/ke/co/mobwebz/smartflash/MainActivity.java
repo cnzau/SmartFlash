@@ -1,13 +1,35 @@
 package ke.co.mobwebz.smartflash;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+
+    ImageButton btnSwitch;
+
+    private Camera camera;
+    private boolean isFlashOn;
+    private boolean hasFlash;
+    Parameters params;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // flash switch button
+        btnSwitch = (ImageButton) findViewById(R.id.btnSwitch);
+
     }
 }
