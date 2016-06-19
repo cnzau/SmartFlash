@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
         btnSwitch = (ImageButton) findViewById(R.id.btnSwitch);
 
         /*
- * First check if device is supporting flashlight or not
- */
+        * First check if device is supporting flashlight or not
+        */
         hasFlash = getApplicationContext().getPackageManager()
                 .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
@@ -53,6 +53,22 @@ public class MainActivity extends Activity {
             alert.show();
             return;
         }
+        /*
+        * Switch click event to toggle flash on/off
+        */
+        btnSwitch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (isFlashOn) {
+                    // turn off flash
+                    turnOffFlash();
+                } else {
+                    // turn on flash
+                    turnOnFlash();
+                }
+            }
+        });
     }
     // getting camera parameters
     private void getCamera() {
