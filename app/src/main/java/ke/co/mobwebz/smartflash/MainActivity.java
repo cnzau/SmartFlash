@@ -31,5 +31,27 @@ public class MainActivity extends Activity {
         // flash switch button
         btnSwitch = (ImageButton) findViewById(R.id.btnSwitch);
 
+        /*
+ * First check if device is supporting flashlight or not
+ */
+        hasFlash = getApplicationContext().getPackageManager()
+                .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+
+        if (!hasFlash) {
+            // device doesn't support flash
+            // Show alert message and close the application
+            AlertDialog alert = new AlertDialog.Builder(MainActivity.this)
+                    .create();
+            alert.setTitle("Error");
+            alert.setMessage("Sorry, your device doesn't support flash light!");
+            alert.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    // closing the application
+                    finish();
+                }
+            });
+            alert.show();
+            return;
+        }
     }
 }
