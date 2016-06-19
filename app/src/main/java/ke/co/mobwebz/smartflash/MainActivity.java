@@ -125,4 +125,15 @@ public class MainActivity extends Activity {
             toggleButtonImage();
         }
     }
+    /*
+    * Toggle switch button images
+    * changing image states to on / off
+    */
+    private void toggleButtonImage(){
+        if(isFlashOn){
+            btnSwitch.setImageResource(R.drawable.switchOn);
+        }else{
+            btnSwitch.setImageResource(R.drawable.switchOff);
+        }
+    }
 }
