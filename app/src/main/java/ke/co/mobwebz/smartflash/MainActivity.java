@@ -53,6 +53,13 @@ public class MainActivity extends Activity {
             alert.show();
             return;
         }
+
+        // get the camera
+        getCamera();
+
+        // displaying button image
+        toggleButtonImage();
+
         /*
         * Switch click event to toggle flash on/off
         */
