@@ -125,6 +125,28 @@ public class MainActivity extends Activity {
             toggleButtonImage();
         }
     }
+
+    /*
+    * Playing sound
+    * will play button toggle sound on flash on / off
+    */
+    private void playSound(){
+        if(isFlashOn){
+            mp = MediaPlayer.create(MainActivity.this, R.raw.soundOnLightSwitchOff);
+        }else{
+            mp = MediaPlayer.create(MainActivity.this, R.raw.soundOnLightSwitchOn);
+        }
+        mp.setOnCompletionListener(new OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                // TODO Auto-generated method stub
+                mp.release();
+            }
+        });
+        mp.start();
+    }
+
     /*
     * Toggle switch button images
     * changing image states to on / off
