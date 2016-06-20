@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
                 camera = Camera.open();
                 params = camera.getParameters();
             } catch (RuntimeException e) {
-                Log.e("Camera Error. Failed to Open. Error: ", e.getMessage());
+                //Log.e("Camera Error. Failed to Open. Error: ", e.getMessage());
             }
         }
     }
@@ -156,6 +156,52 @@ public class MainActivity extends Activity {
             btnSwitch.setImageResource(R.drawable.switchOn);
         }else{
             btnSwitch.setImageResource(R.drawable.switchOff);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // on pause turn off the flash
+        turnOffFlash();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // on resume turn on the flash
+        if(hasFlash)
+            turnOnFlash();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // on starting the app get the camera params
+        getCamera();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        // on stop release the camera
+        if (camera != null) {
+            camera.release();
+            camera = null;
         }
     }
 }
