@@ -139,9 +139,9 @@ public class MainActivity extends Activity {
     */
     private void playSound(){
         if(isFlashOn){
-            mp = MediaPlayer.create(MainActivity.this, R.raw.soundOnLightSwitchOff);
+            mp = MediaPlayer.create(MainActivity.this, R.raw.sound_on_light_switch_off);
         }else{
-            mp = MediaPlayer.create(MainActivity.this, R.raw.soundOnLightSwitchOn);
+            mp = MediaPlayer.create(MainActivity.this, R.raw.sound_on_light_switch_on);
         }
         mp.setOnCompletionListener(new OnCompletionListener() {
 
@@ -160,9 +160,9 @@ public class MainActivity extends Activity {
     */
     private void toggleButtonImage(){
         if(isFlashOn){
-            btnSwitch.setImageResource(R.drawable.switchOn);
+            btnSwitch.setImageResource(R.mipmap.switch_on);
         }else{
-            btnSwitch.setImageResource(R.drawable.switchOff);
+            btnSwitch.setImageResource(R.mipmap.switch_off);
         }
     }
 
@@ -200,6 +200,7 @@ public class MainActivity extends Activity {
         // on starting the app get the camera params
         getCamera();
     }
+
 
     @Override
     protected void onStop() {
